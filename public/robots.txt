@@ -1,0 +1,23 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://tududone.com
+
+# Sitemaps
+Sitemap: https://tududone.com/sitemap.xml
+
+# Diretórios específicos
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Permitir recursos estáticos importantes
+Allow: /images/
+Allow: /favicon.ico
+Allow: /manifest.json
+Allow: /robots.txt
+
+# Crawl delay
+Crawl-delay: 10 

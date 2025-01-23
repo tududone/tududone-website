@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511 512">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-2 {
+        fill: #edf3fb;
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="1.33" cy="2.84" fx="-248.91" fy="-273.82" r="699.38" gradientTransform="translate(4.35)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#bc2a8d"/>
+      <stop offset="1" stop-color="#9a00d0"/>
+    </radialGradient>
+  </defs>
+  <g id="Layer_1">
+    <g>
+      <rect class="cls-1" y="0" width="511" height="512" rx="130" ry="130"/>
+      <path class="cls-2" d="M327.14,128.15H62.82c-4.01,0-6.93,3.29-6.93,6.94v39.82c0,3.65,2.92,6.94,6.93,6.94h52.14v195.07c0,3.65,3.28,6.94,6.93,6.94h43.75c3.65,0,6.93-3.29,6.93-6.94v-195.07h154.22c41.2,0,67.81,32.51,67.81,73.79s-26.61,74.16-67.81,74.16h-38.13l.03-110.69c0-3.65-3.28-6.57-6.93-6.57h-43.2c-3.65,0-6.93,2.92-6.93,6.57v157.81c0,3.65,2.92,6.94,6.56,6.94h88.96c70.36,0,127.97-57.35,127.97-128.22s-57.6-127.49-127.97-127.49Z"/>
+    </g>
+  </g>
+</svg>
