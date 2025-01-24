@@ -1,0 +1,41 @@
+version: '3'
+
+networks:
+  tududone_network:
+    name: tududone_network
+
+services:
+  frontend:
+    container_name: tududone_frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_STRAPI_URL=http://strapi:1337
+    networks:
+      - tududone_network
+    depends_on:
+      - strapi
+    restart: unless-stopped
+
+  strapi:
+    container_name: tududone_strapi
+    image: strapi/strapi
+    ports:
+      - "1337:1337"
+    volumes:
+      - ./my-blog-backend:/srv/app
+    environment:
+      - DATABASE_CLIENT=sqlite
+      - DATABASE_FILENAME=.tmp/data.db
+      - APP_KEYS=your-app-keys-here
+      - API_TOKEN_SALT=your-api-token-salt-here
+      - ADMIN_JWT_SECRET=your-admin-jwt-secret-here
+      - JWT_SECRET=your-jwt-secret-here
+    networks:
+      - tududone_network
+    restart: unless-stopped
+
+  # Removemos o serviço nginx pois você já tem um nginx rodando 
