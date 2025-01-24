@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import FAQ from "@/components/FAQ";
+import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
 import Remodela from "@/components/Remodela";
 import Script from 'next/script';
@@ -58,6 +59,7 @@ export default function Home() {
         <About />
         <Remodela />
         <FAQ />
+        <Blog />
         <Contact />
       </main>
     </>

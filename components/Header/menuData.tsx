@@ -18,7 +18,13 @@ const menuData: Menu[] = [
     title: "Remodelação",
     newTab: false,
     path: "/#remodela",
-  }
+  },
+  {
+    id: 3,
+    title: "Blog",
+    newTab: false,
+    path: "/blog",
+  },
 ];
 
 export default menuData;
