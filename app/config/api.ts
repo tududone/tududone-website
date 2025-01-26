@@ -3,23 +3,16 @@ export const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhos
 export const STRAPI_API_URL = `${STRAPI_URL}/api`;
 
 // Função auxiliar para construir URLs da API do Strapi
-export const getStrapiURL = (path: string = ''): string => {
+export function getStrapiURL(path: string = ''): string {
+  if (!path) {
+    return STRAPI_URL;
+  }
   return `${STRAPI_API_URL}${path}`;
-};
-
-// Função auxiliar para construir URLs de mídia do Strapi
-export const getStrapiMediaUrl = (url: string | null | undefined): string | undefined => {
-  if (!url) return undefined;
-  if (url.startsWith('http')) return url;
-  return `${STRAPI_URL}${url}`;
-};
-
-export function getStrapiURL() {
-  return process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 }
 
-export function getStrapiMediaUrl(url: string) {
+// Função auxiliar para construir URLs de mídia do Strapi
+export function getStrapiMediaUrl(url: string | null | undefined): string {
   if (!url) return '';
   if (url.startsWith('http')) return url;
-  return `${getStrapiURL()}${url}`;
+  return `${STRAPI_URL}${url}`;
 } 
