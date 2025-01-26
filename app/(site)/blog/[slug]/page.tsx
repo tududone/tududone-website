@@ -4,42 +4,19 @@ import SharePost from "@/components/Blog/SharePost";
 import RelatedPost from "@/components/Blog/RelatedPost";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getStrapiURL, getStrapiMediaUrl } from '@/app/config/api';
+import { getStrapiMediaUrl } from '@/app/config/api';
+import { fetchPosts } from '@/app/lib/fetchPosts';
 
 interface PostDetailsProps {
   params: {
     slug: string;
+    cat?: string;
   };
-}
-
-// Busca o post do Strapi
-async function fetchPost(slug: string) {
-  try {
-    const response = await fetch(
-      getStrapiURL(`/posts?filters[slug][$eq]=${slug}&populate=*`),
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error('Falha ao carregar o post');
-    }
-
-    const data = await response.json();
-    return data.data[0];
-  } catch (error) {
-    console.error('Erro ao buscar post:', error);
-    return null;
-  }
 }
 
 // Gera os metadados da página dinamicamente
 export async function generateMetadata({ params }: PostDetailsProps): Promise<Metadata> {
-  const post = await fetchPost(params.slug);
+  const post = await fetchPosts(params.slug);
   
   if (!post) {
     return {
@@ -49,10 +26,6 @@ export async function generateMetadata({ params }: PostDetailsProps): Promise<Me
   }
 
   const coverUrl = post.attributes.cover.data 
-    ? getStrapiMediaUrl(post.attributes.cover.data.attributes.url)
-    : undefined;
-
-  const ogImageUrl = post.attributes.cover.data 
     ? getStrapiMediaUrl(post.attributes.cover.data.attributes.url)
     : undefined;
 
@@ -68,9 +41,9 @@ export async function generateMetadata({ params }: PostDetailsProps): Promise<Me
       type: "article",
       publishedTime: post.attributes.publicationDateNew,
       authors: [post.attributes.author],
-      images: ogImageUrl
+      images: coverUrl
         ? [{
-            url: ogImageUrl,
+            url: coverUrl,
             width: 1200,
             height: 630,
             alt: post.attributes.title,
@@ -81,7 +54,7 @@ export async function generateMetadata({ params }: PostDetailsProps): Promise<Me
 }
 
 const PostDetails = async ({ params }: PostDetailsProps) => {
-  const post = await fetchPost(params.slug);
+  const post = await fetchPosts(params.slug);
 
   if (!post) {
     notFound();

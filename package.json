@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "@types/axios": "^0.9.36",
+    "@types/react-google-recaptcha": "^2.1.9",
     "@types/swiper": "^5.4.3",
     "prettier-plugin-tailwindcss": "^0.6.9"
   }

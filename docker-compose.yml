@@ -1,41 +1,54 @@
 version: '3'
 
-networks:
-  tududone_network:
-    name: tududone_network
-
 services:
   frontend:
-    container_name: tududone_frontend
     build:
       context: .
       dockerfile: Dockerfile
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_STRAPI_URL=https://tududone.com/api
     ports:
       - "3000:3000"
-    environment:
-      - NEXT_PUBLIC_STRAPI_URL=http://strapi:1337
-    networks:
-      - tududone_network
     depends_on:
       - strapi
-    restart: unless-stopped
-
-  strapi:
-    container_name: tududone_strapi
-    image: strapi/strapi
-    ports:
-      - "1337:1337"
-    volumes:
-      - ./my-blog-backend:/srv/app
-    environment:
-      - DATABASE_CLIENT=sqlite
-      - DATABASE_FILENAME=.tmp/data.db
-      - APP_KEYS=your-app-keys-here
-      - API_TOKEN_SALT=your-api-token-salt-here
-      - ADMIN_JWT_SECRET=your-admin-jwt-secret-here
-      - JWT_SECRET=your-jwt-secret-here
     networks:
       - tududone_network
-    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
-  # Removemos o serviço nginx pois você já tem um nginx rodando 
+  strapi:
+    image: strapi/strapi:latest
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - DATABASE_CLIENT=sqlite
+      - DATABASE_FILENAME=.tmp/data.db
+      - ADMIN_JWT_SECRET=${ADMIN_JWT_SECRET}
+      - JWT_SECRET=${JWT_SECRET}
+    volumes:
+      - ./my-blog-backend:/srv/app
+      - strapi-data:/srv/app/.tmp
+    ports:
+      - "1337:1337"
+    networks:
+      - tududone_network
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:1337/admin"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  tududone_network:
+    driver: bridge
+
+volumes:
+  strapi-data:
+    driver: local
+
+# Removemos o serviço nginx pois você já tem um nginx rodando 
