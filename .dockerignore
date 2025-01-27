@@ -1,15 +1,34 @@
-.git
-.gitignore
-**/node_modules
-**/.next
-.env
-.env.*
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Testing
+coverage
+
+# Next.js
+.next/
+out/
+
+# Production
+build
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
 npm-debug.log*
-README.md
-.dockerignore
-Dockerfile
-docker-compose.yml
-my-blog-backend/
-.tmp/
-dist/
-build/ 
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Local env files
+.env*.local
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts 

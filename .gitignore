@@ -26,7 +26,6 @@ yarn-error.log*
 
 # local env files
 .env*.local
-.env
 
 # vercel
 .vercel
@@ -34,13 +33,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# Strapi
-my-blog-backend/.cache/
-my-blog-backend/build/
-my-blog-backend/.tmp/
-my-blog-backend/node_modules/
-my-blog-backend/.env
-my-blog-backend/license.txt
-my-blog-backend/exports
-my-blog-backend/*.cache

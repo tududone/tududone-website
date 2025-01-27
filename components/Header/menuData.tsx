@@ -19,12 +19,6 @@ const menuData: Menu[] = [
     newTab: false,
     path: "/#remodela",
   },
-  {
-    id: 3,
-    title: "Blog",
-    newTab: false,
-    path: "/blog",
-  },
 ];
 
 export default menuData;

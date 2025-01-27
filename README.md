@@ -1,75 +1,75 @@
-# Tududone - Remodelação de Apartamentos
+# Tududone Website
 
-Site institucional da Tududone, especializada em remodelação de apartamentos em Almada, Portugal.
+Este é o repositório do site da Tududone, uma empresa especializada em remodelações e design de interiores.
 
-## 🔗 Links
+## Tecnologias Utilizadas
 
-- [Website](https://tududone.com)
-- [GitHub](https://github.com/tududone/tududone-website)
-
-## 🚀 Tecnologias
-
-- Next.js 14
+- Next.js 13
 - TypeScript
 - Tailwind CSS
-- Strapi (CMS)
-- Framer Motion
+- React
+- Node.js
 
-## 💻 Estrutura do Projeto
+## Funcionalidades
 
-O projeto está dividido em duas partes principais:
+- Design responsivo
+- Modo escuro/claro
+- Formulário de contato
+- Galeria de projetos
+- FAQ
+- Sobre nós
 
-- `Frontend`: Aplicação Next.js com TypeScript
-- `Backend`: CMS Strapi para gerenciamento de conteúdo
+## Instalação
 
-## 🛠️ Instalação
-
-### Frontend
-
+1. Clone o repositório:
 ```bash
-# Clone o repositório
-git clone https://github.com/tududone/tududone-website.git
+git clone https://github.com/seu-usuario/tududone-website.git
+```
 
-# Entre no diretório
+2. Instale as dependências:
+```bash
 cd tududone-website
-
-# Instale as dependências
 npm install
+```
 
-# Rode em desenvolvimento
+3. Crie um arquivo `.env.local` e adicione as variáveis de ambiente necessárias:
+```env
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
+4. Execute o projeto em modo de desenvolvimento:
+```bash
 npm run dev
 ```
 
-### Backend (Strapi)
+O site estará disponível em `http://localhost:3000`.
 
-```bash
-cd my-blog-backend
+## Scripts Disponíveis
 
-# Instale as dependências
-npm install
+- `npm run dev`: Inicia o servidor de desenvolvimento
+- `npm run build`: Cria uma versão otimizada para produção
+- `npm start`: Inicia o servidor de produção
+- `npm run lint`: Executa a verificação de linting
 
-# Rode em desenvolvimento
-npm run develop
+## Estrutura do Projeto
+
+```
+tududone-website/
+├── app/                # Páginas e rotas da aplicação
+├── components/         # Componentes React reutilizáveis
+├── public/            # Arquivos estáticos
+├── styles/           # Arquivos de estilo
+└── types/            # Definições de tipos TypeScript
 ```
 
-## 🔧 Configuração
+## Contribuindo
 
-### Variáveis de Ambiente
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
+3. Faça commit das suas alterações (`git commit -m 'Adiciona nova feature'`)
+4. Faça push para a branch (`git push origin feature/nova-feature`)
+5. Abra um Pull Request
 
-Crie um arquivo `.env.local` na raiz do projeto com as seguintes variáveis:
+## Licença
 
-```env
-NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
-```
-
-## 📝 Funcionalidades
-
-- Landing page responsiva
-- Blog com gerenciamento de conteúdo via Strapi
-- Seções: Home, Sobre, Remodelação, Blog
-- Tema claro/escuro
-- Animações suaves com Framer Motion
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT.
+Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.

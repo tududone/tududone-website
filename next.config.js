@@ -3,7 +3,6 @@
 const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     domains: ['tududone.com'],
     remotePatterns: [

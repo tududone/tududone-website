@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 
 const About = () => {
@@ -9,111 +8,46 @@ const About = () => {
       {/* Ponto de âncora invisível */}
       <div id="about-anchor" className="-mt-20 h-20"></div>
       {/* <!-- ===== About Start ===== --> */}
-      <section className="overflow-hidden pb-20 lg:pb-25 xl:pb-30">
+      <section id="about" className="overflow-hidden pb-20 lg:pb-25 xl:pb-30">
         <div className="mx-auto max-w-c-1235 px-4 md:px-8 xl:px-0">
           <div className="flex items-center gap-8 lg:gap-32.5">
-            <motion.div
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  x: -20,
-                },
-
-                visible: {
-                  opacity: 1,
-                  x: 0,
-                },
-              }}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="animate_left relative mx-auto hidden aspect-[588/526.5] md:block md:w-1/2"
-            >
-              <Image
-                src="/images/about/about-light-01.svg"
-                alt="About"
-                className="dark:hidden"
-                fill
-              />
-              <Image
-                src="/images/about/about-dark-01.svg"
-                alt="About"
-                className="hidden dark:block"
-                fill
-              />
-            </motion.div>
-            <motion.div
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  x: 20,
-                },
-
-                visible: {
-                  opacity: 1,
-                  x: 0,
-                },
-              }}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="animate_right md:w-1/2"
-            >
-              <span className="font-medium uppercase text-black dark:text-white">
-                {/*<span className="mb-4 mr-4 inline-flex rounded-full bg-meta px-4.5 py-1 text-metatitle uppercase text-white ">
-                  New
-                </span>{" "}*/}
-                SOBRE A TUDUDONE
-              </span>
+            <div className="animate_left relative mx-auto hidden md:block md:w-1/2">
+              <div className="relative w-full h-[526.5px]">
+                <Image
+                  src="/images/about/about-light-01.svg"
+                  alt="Sobre"
+                  className="dark:hidden"
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
+                <Image
+                  src="/images/about/about-dark-01.svg"
+                  alt="Sobre"
+                  className="hidden dark:block"
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
+            </div>
+            <div className="animate_right md:w-1/2">
               <h2 className="relative mb-6 text-3xl font-bold text-black dark:text-white xl:text-hero">
-                Excelência em&nbsp;
-                <span className="relative inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-purple-300 dark:before:bg-titlebgdark">
-                  Remodelação
-                </span>
+                Sobre a Tududone
               </h2>
-              <p>
-                Na Tududone, acreditamos que cada espaço tem o potencial de se
-                transformar em algo extraordinário. Com uma equipa jovem e
-                dinâmica, comprometida com a excelência, estamos prontos para
-                tornar seus sonhos realidade. Da concepção ao acabamento,
-                garantimos qualidade e atenção a cada detalhe, porque sabemos o
-                impacto que um projeto bem executado tem na sua vida.
+              <p className="mb-6">
+                A Tududone é uma empresa especializada em remodelação de apartamentos em Almada, Portugal. 
+                Nossa missão é transformar espaços antigos em ambientes modernos e funcionais, sempre 
+                priorizando a qualidade e a satisfação dos nossos clientes.
               </p>
-
-              <div className="mt-7.5 flex items-center gap-5">
-                <div className="flex h-15 w-15 items-center justify-center rounded-[50%] border border-stroke dark:border-strokedark dark:bg-blacksection">
-                  <p className="text-metatitle2 font-semibold text-black dark:text-white">
-                    01
-                  </p>
-                </div>
-                <div className="w-3/4">
-                  <h3 className="mb-0.5 text-metatitle2 text-black dark:text-white">
-                    Profissionalismo e Qualidade
-                  </h3>
-                  <p>
-                    Garantimos um padrão elevado em todas as etapas do projeto.
-                  </p>
-                </div>
-              </div>
-              <div className="mt-7.5 flex items-center gap-5">
-                <div className="flex h-15 w-15 items-center justify-center rounded-[50%] border border-stroke dark:border-strokedark dark:bg-blacksection">
-                  <p className="text-metatitle2 font-semibold text-black dark:text-white">
-                    02
-                  </p>
-                </div>
-                <div className="w-3/4">
-                  <h3 className="mb-0.5 text-metatitle2 text-black dark:text-white">
-                    Comunicação Transparente
-                  </h3>
-                  <p>
-                    Trabalhamos lado a lado com os clientes para assegurar que
-                    tudo está alinhado.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+              <p className="mb-6">
+                Com uma equipe altamente qualificada e anos de experiência no mercado, oferecemos 
+                soluções completas em remodelação, desde o planejamento até a execução final do projeto.
+              </p>
+              <p>
+                Nosso compromisso é entregar projetos dentro do prazo e orçamento estabelecidos, 
+                garantindo a qualidade em cada detalhe e proporcionando uma experiência tranquila 
+                e satisfatória aos nossos clientes.
+              </p>
+            </div>
           </div>
         </div>
       </section>

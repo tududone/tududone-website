@@ -1,18 +1,12 @@
 "use client";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 import emailjs from '@emailjs/browser';
-import ReCAPTCHA from "react-google-recaptcha";
 
 // Inicializa o EmailJS
 emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!);
 
 const Contact = () => {
-  /**
-   * Source: https://www.joshwcomeau.com/react/the-perils-of-rehydration/
-   * Reason: To fix rehydration error
-   */
   const [hasMounted, setHasMounted] = React.useState(false);
   const [formData, setFormData] = React.useState({
     name: '',
@@ -23,16 +17,10 @@ const Contact = () => {
     acceptTerms: false
   });
   const [loading, setLoading] = React.useState(false);
-  const recaptchaRef = React.useRef<ReCAPTCHA>(null);
-  const [recaptchaValue, setRecaptchaValue] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     setHasMounted(true);
   }, []);
-
-  const handleRecaptchaChange = (value: string | null) => {
-    setRecaptchaValue(value);
-  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -54,11 +42,6 @@ const Contact = () => {
     
     if (!formData.acceptTerms) {
       alert('Por favor, aceite os termos antes de enviar.');
-      return;
-    }
-
-    if (!recaptchaValue) {
-      alert('Por favor, complete a verificação reCAPTCHA.');
       return;
     }
 
@@ -87,8 +70,6 @@ const Contact = () => {
         message: '',
         acceptTerms: false
       });
-      recaptchaRef.current?.reset();
-      setRecaptchaValue(null);
     } catch (error) {
       console.error('Erro ao enviar mensagem:', error);
       alert('Erro ao enviar mensagem. Por favor, tente novamente.');
@@ -122,22 +103,7 @@ const Contact = () => {
           </div>
 
           <div className="flex flex-col-reverse flex-wrap gap-8 md:flex-row md:flex-nowrap md:justify-between xl:gap-20">
-            <motion.div
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  y: -20,
-                },
-
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                },
-              }}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ duration: 1, delay: 0.1 }}
-              viewport={{ once: true }}
+            <div
               className="animate_top w-full rounded-lg bg-white p-7.5 shadow-solid-8 dark:border dark:border-strokedark dark:bg-black md:w-3/5 lg:w-3/4 xl:p-15"
             >
               <h2 className="mb-15 text-3xl font-semibold text-black dark:text-white xl:text-sectiontitle2">
@@ -201,14 +167,6 @@ const Contact = () => {
                   ></textarea>
                 </div>
 
-                <div className="mb-7.5 flex flex-col gap-7.5">
-                  <ReCAPTCHA
-                    ref={recaptchaRef}
-                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-                    onChange={handleRecaptchaChange}
-                  />
-                </div>
-
                 <div className="flex flex-wrap gap-4 xl:justify-between">
                   <div className="mb-4 flex md:mb-0">
                     <label className="flex items-center cursor-pointer">
@@ -267,24 +225,9 @@ const Contact = () => {
                   </button>
                 </div>
               </form>
-            </motion.div>
+            </div>
 
-            <motion.div
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  y: -20,
-                },
-
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                },
-              }}
-              initial="hidden"
-              whileInView="visible"
-              transition={{ duration: 2, delay: 0.1 }}
-              viewport={{ once: true }}
+            <div
               className="animate_top w-full md:w-2/5 md:p-7.5 lg:w-[26%] xl:pt-15"
             >
               <h2 className="mb-12.5 text-3xl font-semibold text-black dark:text-white xl:text-sectiontitle2">
@@ -324,7 +267,7 @@ const Contact = () => {
                   <a href="#">+351 910 165 360</a>
                 </p>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
